@@ -4,7 +4,7 @@ const app = express();
 
 app.use(express.json());
 // Создание сервера
-const server = require("https").createServer(app);
+const server = require("http").createServer(app);
 // Берём API socket.io
 const io = require("socket.io")(server);
 
