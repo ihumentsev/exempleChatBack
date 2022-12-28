@@ -7,6 +7,7 @@ app.use(
   cors({
     origin: "https://skazzp.github.io/petly-front/",
     methods: ["GET", "POST"],
+    allowedHeaders: ["abcd"],
     credentials: true,
   })
 );
