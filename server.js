@@ -3,14 +3,7 @@ const cors = require("cors");
 const app = express();
 
 app.use(express.json());
-app.use(
-  cors({
-    origin: "https://skazzp.github.io/petly-front/",
-    methods: ["GET", "POST"],
-    allowedHeaders: ["abcd"],
-    credentials: true,
-  })
-);
+app.use(cors());
 // Создание сервера
 const server = require("http").createServer(app);
 // Берём API socket.io
