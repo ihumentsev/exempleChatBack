@@ -3,17 +3,17 @@ const cors = require("cors");
 const app = express();
 
 app.use(express.json());
-app.use(cors());
-// Создание сервера
-const server = require("http").createServer(app);
-// Берём API socket.io
-const io = require("socket.io")(server, {
-  cors: {
+app.use(
+  cors({
     origin: "https://skazzp.github.io/petly-front/",
     methods: ["GET", "POST"],
     credentials: true,
-  },
-});
+  })
+);
+// Создание сервера
+const server = require("http").createServer(app);
+// Берём API socket.io
+const io = require("socket.io")(server);
 
 const rooms = new Map();
 
