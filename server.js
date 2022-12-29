@@ -16,7 +16,14 @@ app.use(cors(corsOptionsDelegate));
 // Создание сервера
 const server = require("http").createServer(app);
 // Берём API socket.io
-const io = require("socket.io")(server);
+const io = require("socket.io")(server, {
+  cors: {
+    origin: "https://chat-vy0n.onrender.com/",
+    methods: ["GET", "POST"],
+    allowedHeaders: ["my-custom-header"],
+    credentials: true,
+  },
+});
 
 const rooms = new Map();
 
@@ -78,9 +85,8 @@ io.on("connection", (socket) => {
         socket.broadcast.to(roomId).emit("ROOM:SET_USERS", users);
       }
     });
+    console.log("disconnected");
   });
-
-  console.log("disconnected");
 });
 
 // Назначаем порт для сервера
