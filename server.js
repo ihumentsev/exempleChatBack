@@ -6,9 +6,10 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: "*", // restrict calls to those this address
+    origin: "*",
   })
 );
+
 // Создание сервера
 const server = require("http").createServer(app);
 // Берём API socket.io
