@@ -4,12 +4,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use(
-  cors({
-    origin: "*",
-    methods: ["GET", "POST"],
-  })
-);
+app.use(cors());
 
 // Создание сервера
 const server = require("http").createServer(app);
