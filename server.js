@@ -24,7 +24,7 @@ const io = require("socket.io")(server, {
   cors: {
     origin: "https://chat-vy0n.onrender.com/",
     methods: ["GET", "POST"],
-    allowedHeaders: ["my-custom-header"],
+    allowedHeaders: ["abcd"],
     credentials: true,
   },
 });
