@@ -4,7 +4,11 @@ const app = express();
 
 app.use(express.json());
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "*", // restrict calls to those this address
+  })
+);
 // Создание сервера
 const server = require("http").createServer(app);
 // Берём API socket.io
