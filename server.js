@@ -3,35 +3,12 @@ const cors = require("cors");
 const app = express();
 
 app.use(express.json());
-const allowlist = [
-  "https://chat-vy0n.onrender.com/",
-  "https://skazzp.github.io/petly-front/",
-];
-const corsOptionsDelegate = function (req, callback) {
-  let corsOptions;
-  if (allowlist.indexOf(req.header("Origin")) !== -1) {
-    corsOptions = { origin: true }; // reflect (enable) the requested origin in the CORS response
-  } else {
-    corsOptions = { origin: false }; // disable CORS for this request
-  }
-  callback(null, corsOptions); // callback expects two parameters: error and options
-};
-app.use(cors(corsOptionsDelegate));
+
+app.use(cors());
 // Создание сервера
 const server = require("http").createServer(app);
 // Берём API socket.io
-const io = require("socket.io")(server, {
-  cors: {
-    origin: [
-      "https://chat-vy0n.onrender.com",
-      "https://skazzp.github.io/petly-front",
-      "http://localhost:3000",
-    ],
-    methods: ["GET", "POST"],
-    allowedHeaders: ["abcd"],
-    credentials: true,
-  },
-});
+const io = require("socket.io")(server, { cors: { origin: "*" } });
 
 const rooms = new Map();
 
