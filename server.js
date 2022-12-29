@@ -3,6 +3,10 @@ const cors = require("cors");
 const app = express();
 
 app.use(express.json());
+const allowlist = [
+  "https://chat-vy0n.onrender.com/",
+  "https://skazzp.github.io/petly-front/",
+];
 const corsOptionsDelegate = function (req, callback) {
   let corsOptions;
   if (allowlist.indexOf(req.header("Origin")) !== -1) {
